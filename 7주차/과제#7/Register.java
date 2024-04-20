@@ -1,8 +1,8 @@
-package subject7_2;
+package subject;
 
 public class Register {
-	private Course course;
-	private Student student;
+	private Course course;		//Course 를 가르키는 변수
+	private Student student;	//Student 를 가르키는 변수
 	
 	public Register(Student stu, Course course) {
 		if(course.getMaxStu() > course.getCurrentStu()) {

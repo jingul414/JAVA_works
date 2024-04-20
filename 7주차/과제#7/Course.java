@@ -1,11 +1,11 @@
-package subject7_2;
+package subject;
 
 public class Course {
 	private static int courseCount = 0; //Course 객체들의 수 
 	private String name_;				//교과목명
 	private int maxStu_;				//최대 수강 인원수
 	private int currentStu_;			//수강 인원수
-	private int gpa_;				//학점수
+	private int gpa_;					//학점수
 	
 	public Course(String name, int stu, int gpa) {
 		this.name_ = name;

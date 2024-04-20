@@ -1,4 +1,4 @@
-package subject7_2;
+package subject;
 
 public class Student {
 	private String stuID_;		//학번
@@ -41,6 +41,10 @@ public class Student {
 		this.stuName_ = stuName;
 	}
 
+	public void setMaxCredit(int maxCredit) {
+		this.maxCredit_ = maxCredit;
+	}
+	
 	public void setEnrollCredit(int enrollCredit) {
 		this.enrollCredit_ = enrollCredit;
 	}

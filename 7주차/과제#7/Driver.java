@@ -1,12 +1,15 @@
-package subject7_2;
+package subject;
+
+import java.util.Scanner;
 
 public class Driver {
+
 	public static void main(String[] args) {
 		Course course1 = new Course("알고리즘", 30, 4);
 		Course course2 = new Course("자료구조", 25, 3);
 		System.out.println("수강 신청 전\n");
 		
-		System.out.println("교과목명\t\t최대 학생수\t\t현재 학생수");
+		System.out.println("교과목명\t\t최대 학생수\t현재 학생수");
 		course1.stat();
 		course2.stat();
 		System.out.println("");
@@ -15,7 +18,7 @@ public class Driver {
 		course2.setMaxStu(28);
 		
 		System.out.println("수강 신원 증원 후\n");
-		System.out.println("교과목명\t\t최대 학생수\t\t현재 학생수");
+		System.out.println("교과목명\t\t최대 학생수\t현재 학생수");
 		course1.stat();
 		course2.stat();
 		System.out.println("");
@@ -45,7 +48,7 @@ public class Driver {
 		reg5.printing();		
 		
 		System.out.println("\n수강 신청 후\n");
-		System.out.println("교과목명\t\t최대 학생수\t\t현재 학생수");
+		System.out.println("교과목명\t\t최대 학생수\t현재 학생수");
 		course1.stat();
 		course2.stat();
 		System.out.println("");
