@@ -72,11 +72,11 @@ public class romanToNum {
 		
 		//1미만이거나 5000이상일 경우
 		while(num_dec < 1 || 5000 <= num_dec){
-            System.out.println("잘못 입력된 로마숫자");
-        	System.out.print("로마 숫자를 입력하세요: ");
-    		roman = sc.next();
-        	num_dec = romanToDec(roman);
-        }
+            		System.out.println("잘못 입력된 로마숫자");
+        		System.out.print("로마 숫자를 입력하세요: ");
+    			roman = sc.next();
+        		num_dec = romanToDec(roman);
+        	}
 		
 		num_oct = decToOct(num_dec);
 		
