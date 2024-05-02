@@ -26,7 +26,6 @@ public class Student {
     }
 
     public void printing(){
-        System.out.println("이름 : " + getName());
-        System.out.println("학번 : " + getId());
+        System.out.println(getId() + "\t" + getName());
     }
 }
