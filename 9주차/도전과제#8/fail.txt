@@ -1,0 +1,14 @@
+아래와 같은 실행 오류 발생함 (-30)
+예약을 원하는 여행 상품의 번호를 입력하세요: 1
+이름을 입력하세요: s
+여행자 수를 입력하세요: 5
+좌석이 충분하지 않음! 다시 입력하세요
+예약을 원하는 여행 상품의 번호를 입력하세요: 3
+이름을 입력하세요: s
+여행자 수를 입력하세요: 3
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+at reserve.getFirst(reserve.java:46)
+at reserve.main(reserve.java:71)
+
+배열 오류로 -30 감점
+70/100
