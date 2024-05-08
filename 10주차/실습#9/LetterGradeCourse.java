@@ -5,14 +5,13 @@ public class LetterGradeCourse extends Course {
         super(name, grade);
     }
 
-    @Override
-    public String getGrade(){
+    public void setScore(){
         if(grade >= 80){
-            return "A";
+            score = "A";
         }else if(60 <= grade && grade < 80){
-            return "B";
+            score = "B";
         }else{
-            return "F";
+            score = "F";
         }
     }
 }

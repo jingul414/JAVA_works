@@ -6,12 +6,11 @@ public class PassFailCourse extends Course {
         super(name, grade);
     }
 
-    @Override
-    public String getGrade(){
+    public void setScore(){
         if(grade >= 60){
-            return "CR";
-        }else{
-            return "NC";
+            score = "CR";
+        }else {
+            score = "NC";
         }
     }
 }
