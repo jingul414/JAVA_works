@@ -11,10 +11,8 @@ public class Driver {
         for (int i = 0; i < num; i++) {
             type = scan.next();
             if(type.equals("e")){
-                System.out.println("e입력,test");
                 questions[i] = new Essay();
             }else{
-                System.out.println("m입력,test");
                 questions[i] = new MultipleChoice();
             }
             questions[i].readQuestion();
