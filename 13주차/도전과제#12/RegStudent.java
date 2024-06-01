@@ -6,18 +6,19 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class RegStudent extends JFrame{
-    private JTextField nameField, idField, phoneNumberField, addressField; //성명, 학번, 전화번호, 주소를 입력할 텍스트 필드
-    private CheckboxGroup genderGroup;  //성별 체크박스그룹
-    private Checkbox male, felmale,exercise, music, movie, travel;     //남, 여 체크박스,   학과선택, 운동, 음악감상, 영화, 여행 체크박스
-    private Choice departChoice;    //학과 선택
-    private JTextArea selfIntroduceArea; //자기소개 구역
-    private ArrayList<Student> studentList = new ArrayList<Student>();  //학생 객체를 저장할 리스트
-    private ArrayList<String> hobbies;  //취미를 저장할 리스트
-    private int size = 0;   //취미 리스트의 최대 사이즈
+    private JTextField nameField, idField, phoneNumberField, addressField;  //성명, 학번, 전화번호, 주소를 입력할 텍스트 필드
+    private CheckboxGroup genderGroup;                                      //성별 체크박스그룹
+    private Checkbox male, felmale,exercise, music, movie, travel;          //남, 여 체크박스,   학과선택, 운동, 음악감상, 영화, 여행 체크박스
+    private Choice departChoice;                                            //학과 선택
+    private JTextArea selfIntroduceArea;                                    //자기소개 구역
+    private ArrayList<Student> studentList = new ArrayList<Student>();      //학생 객체를 저장할 리스트
+    private ArrayList<String> hobbies;                                      //취미를 저장할 리스트
+    private int size = 0;                                                   //취미 리스트의 최대 사이즈
 
     public RegStudent() {
         /*
          * 구성 방법: 전체적인 프레임을 BorderLayout 로 설정 후, GridLayout을 상단에 배치해서 상단의 5줄을 처리
+         * 각줄에는 BordrLayout 인 패널을 만들어서 성명, 성별 등 각 요소 처리
          * 그후 중간에 BorderLayout을 다시 배치해서 자기소개 라벨과 textarea 처리
          * 하단에는 저장, 종료 버튼이 담겨있는 패널을 추가해서 버튼 처리
          */
@@ -249,7 +250,6 @@ public class RegStudent extends JFrame{
         if(music.getState()) hobbies.add("음악감상");
         if(movie.getState()) hobbies.add("영화");
         if(travel.getState()) hobbies.add("여행");
-
         if(hobbies.size() < 2) {
             JOptionPane.showMessageDialog(this, "취미를 2개 이상 선택하세요");
             return;
@@ -266,6 +266,7 @@ public class RegStudent extends JFrame{
         clearInfo();
     }
 
+    //저장 버튼을 눌렀을때 입력되어 있던 정보를 초기화 함
     private void clearInfo(){
         nameField.setText("");
         genderGroup.setSelectedCheckbox(null);
@@ -281,9 +282,8 @@ public class RegStudent extends JFrame{
     }
 
     private void printing() {
-        System.out.print("학번\t\t이름\t성별\t전화번호\t주소\t\t\t\t학과\t\t\t");
-        System.out.print("취미");
-        for (int i = 0; i < size+2;i++) {
+        System.out.print("학번\t\t이름\t\t성별\t전화번호\t주소\t\t\t\t학과\t\t\t취미");
+        for (int i = 0; i < size;i++) {
             System.out.print("\t");
         }
         System.out.println("자기소개");
@@ -292,6 +292,6 @@ public class RegStudent extends JFrame{
         }
     }
     public static void main(String[] args) {
-        RegStudent student = new RegStudent();
+        new RegStudent();
     }
 }
