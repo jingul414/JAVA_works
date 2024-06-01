@@ -11,32 +11,47 @@ public class RegStudent extends JFrame{
     private Checkbox male, felmale,exercise, music, movie, travel;     //남, 여 체크박스,   학과선택, 운동, 음악감상, 영화, 여행 체크박스
     private Choice departChoice;    //학과 선택
     private JTextArea selfIntroduceArea; //자기소개 구역
-    private ArrayList<Student> studentList = new ArrayList<Student>();
-    private ArrayList<String> hobbies;
+    private ArrayList<Student> studentList = new ArrayList<Student>();  //학생 객체를 저장할 리스트
+    private ArrayList<String> hobbies;  //취미를 저장할 리스트
     private int size = 0;   //취미 리스트의 최대 사이즈
 
     public RegStudent() {
+        /*
+         * 구성 방법: 전체적인 프레임을 BorderLayout 로 설정 후, GridLayout을 상단에 배치해서 상단의 5줄을 처리
+         * 그후 중간에 BorderLayout을 다시 배치해서 자기소개 라벨과 textarea 처리
+         * 하단에는 저장, 종료 버튼이 담겨있는 패널을 추가해서 버튼 처리
+         */
         setTitle("학생 등록");
-        setSize(500,750);
+        setSize(400,600);
         setLocation(400,100);
         getContentPane().setBackground(Color.yellow);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        JPanel upperPanel = new JPanel();
+        upperPanel.setLayout(new BorderLayout());
+        upperPanel.setBackground(Color.yellow);
+
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(5, 1, 0, 30));
         panel.setBackground(Color.YELLOW);
 
+        upperPanel.add(panel, BorderLayout.NORTH);
+
+        JPanel firstPanel = new JPanel();
+        firstPanel.setLayout(new BorderLayout());
+        firstPanel.setBackground(Color.YELLOW);
+
         //성명
-        JPanel namePanel = new JPanel(new FlowLayout(2));
+        JPanel namePanel = new JPanel(new BorderLayout());
         JLabel nameLabel = new JLabel("성명");
-        nameLabel.setPreferredSize(new Dimension(50,30));
-        namePanel.add(nameLabel);
+        nameLabel.setPreferredSize(new Dimension(40,20));
+        namePanel.add(nameLabel,BorderLayout.WEST);
         nameField = new JTextField();
-        nameField.setPreferredSize(new Dimension(260,30));
-        namePanel.add(nameField);
+        nameField.setPreferredSize(new Dimension(220,20));
+        namePanel.add(nameField, BorderLayout.EAST);
         namePanel.setBackground(Color.yellow);
-        panel.add(namePanel);
+        firstPanel.add(namePanel,BorderLayout.WEST);
 
         //성별
         JPanel genderPanel = new JPanel(new GridLayout(1,2));
@@ -47,61 +62,85 @@ public class RegStudent extends JFrame{
         genderPanel.add(male);
         genderPanel.add(felmale);
         genderPanel.setBackground(Color.yellow);
-        panel.add(genderPanel);
+        firstPanel.add(genderPanel, BorderLayout.EAST);
+
+        panel.add(firstPanel, BorderLayout.CENTER);
+        
+        JPanel secondPanel = new JPanel();
+        secondPanel.setLayout(new BorderLayout());
+        secondPanel.setBackground(Color.YELLOW);
 
         //학번
-        JPanel idPanel = new JPanel(new FlowLayout(2));
+        JPanel idPanel = new JPanel(new BorderLayout());
         JLabel idLabel = new JLabel("학번");
-        idLabel.setPreferredSize(new Dimension(50,30));
-        idPanel.add(idLabel);
+        idLabel.setPreferredSize(new Dimension(40,30));
+        idPanel.add(idLabel, BorderLayout.WEST);
         idField = new JTextField();
-        idField.setPreferredSize(new Dimension(150,30));
-        idPanel.add(idField);
+        idField.setPreferredSize(new Dimension(130,30));
+        idPanel.add(idField, BorderLayout.EAST);
         idPanel.setBackground(Color.yellow);
-        panel.add(idPanel);
+        secondPanel.add(idPanel, BorderLayout.WEST);
 
         //전화번호
-        JPanel numberPanel = new JPanel(new FlowLayout(2));
+        JPanel numberPanel = new JPanel(new BorderLayout());
         JLabel nubmerLabel = new JLabel("전화번호");
         nubmerLabel.setPreferredSize(new Dimension(70,30));
-        numberPanel.add(nubmerLabel);
+        numberPanel.add(nubmerLabel, BorderLayout.WEST);
         phoneNumberField = new JTextField();
         phoneNumberField.setPreferredSize(new Dimension(120,30));
-        numberPanel.add(phoneNumberField);
+        numberPanel.add(phoneNumberField, BorderLayout.EAST);
         numberPanel.setBackground(Color.yellow);
-        panel.add(numberPanel);
+        secondPanel.add(numberPanel, BorderLayout.EAST);
+
+        panel.add(secondPanel);
+
+        JPanel thirdPanel = new JPanel();
+        thirdPanel.setLayout(new BorderLayout());
+        thirdPanel.setBackground(Color.YELLOW);
 
         //주소
-        JPanel addressPanel = new JPanel(new FlowLayout(2));
+        JPanel addressPanel = new JPanel(new BorderLayout());
         JLabel addrLabel = new JLabel("주소");
         addrLabel.setPreferredSize(new Dimension(50,30));
-        addressPanel.add(addrLabel);
+        addressPanel.add(addrLabel, BorderLayout.WEST);
         addressField = new JTextField();
-        addressField.setPreferredSize(new Dimension(360,30));
-        addressPanel.add(addressField);
+        addressField.setPreferredSize(new Dimension(345,30));
+        addressPanel.add(addressField, BorderLayout.EAST);
         addressPanel.setBackground(Color.yellow);
-        panel.add(addressPanel);
+        thirdPanel.add(addressPanel, BorderLayout.WEST);
+
+        panel.add(thirdPanel);
+
+        JPanel fourthPanel = new JPanel();
+        fourthPanel.setLayout(new BorderLayout());
+        fourthPanel.setBackground(Color.YELLOW);
 
         //학과
-        JPanel departPanel = new JPanel(new FlowLayout(2));
+        JPanel departPanel = new JPanel(new BorderLayout());
         JLabel departLabel = new JLabel("학과명");
         departLabel.setPreferredSize(new Dimension(50,30));
-        departPanel.add(departLabel);
+        departPanel.add(departLabel, BorderLayout.WEST);
         departChoice = new Choice();
-        departChoice.setPreferredSize(new Dimension(360,30));
+        departChoice.setPreferredSize(new Dimension(330,30));
         departChoice.add("학과 선택");
         departChoice.add("컴퓨터공학과");
         departChoice.add("전자공학과");
         departChoice.add("정보통신공학과");
-        departPanel.add(departChoice);
+        departPanel.add(departChoice, BorderLayout.EAST);
         departPanel.setBackground(Color.yellow);
-        panel.add(departPanel);
+        fourthPanel.add(departPanel, BorderLayout.WEST);
+
+        panel.add(fourthPanel);
+
+        JPanel fifthPanel = new JPanel();
+        fifthPanel.setLayout(new BorderLayout());
+        fifthPanel.setBackground(Color.YELLOW);
 
         //취미
-        JPanel hobbyPanel = new JPanel(new FlowLayout(5));
+        JPanel hobbyPanel = new JPanel(new BorderLayout());
         JLabel hobbyLabel = new JLabel("취미");
-        hobbyLabel.setPreferredSize(new Dimension(140,30));
-        hobbyPanel.add(hobbyLabel);
+        hobbyLabel.setPreferredSize(new Dimension(50,30));
+        hobbyPanel.add(hobbyLabel, BorderLayout.WEST);
         JPanel innerHobbiesPanel = new JPanel(new GridLayout(1,4));
         exercise = new Checkbox("운동");
         music = new Checkbox("음악감상");
@@ -112,27 +151,35 @@ public class RegStudent extends JFrame{
         innerHobbiesPanel.add(movie);
         innerHobbiesPanel.add(travel);
         innerHobbiesPanel.setBackground(Color.yellow);
-        hobbyPanel.add(innerHobbiesPanel);
+        hobbyPanel.add(innerHobbiesPanel, BorderLayout.EAST);
         hobbyPanel.setBackground(Color.yellow);
-        panel.add(hobbyPanel);
+        fifthPanel.add(hobbyPanel, BorderLayout.WEST);
+
+        panel.add(fifthPanel);
+
+        JPanel lowerPanel = new JPanel();
+        lowerPanel.setLayout(new BorderLayout());
+        lowerPanel.setBackground(Color.yellow);
         
         //자기소개
         JPanel introPanel = new JPanel(new BorderLayout());
         introPanel.add(new JLabel("자기소개"),BorderLayout.NORTH);
-        selfIntroduceArea = new JTextArea(23,42);
+        selfIntroduceArea = new JTextArea(10,10);
         JScrollPane scrollPane = new JScrollPane(selfIntroduceArea,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         introPanel.add(scrollPane);
         introPanel.setBackground(Color.yellow);
-        panel.add(introPanel);
+        lowerPanel.add(introPanel, BorderLayout.CENTER);
 
-        add(panel, BorderLayout.CENTER);
+        add(upperPanel, BorderLayout.NORTH);
+        add(lowerPanel, BorderLayout.CENTER);
 
         //버튼
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel buttonPanel = new JPanel(new BorderLayout());
         JButton saveButton = new JButton("저장");
         JButton exitButton = new JButton("종료");
-        buttonPanel.add(saveButton);
-        buttonPanel.add(exitButton);
+        buttonPanel.add(saveButton,BorderLayout.WEST);
+        buttonPanel.add(exitButton,BorderLayout.EAST);
+        buttonPanel.setBackground(Color.yellow);
         add(buttonPanel, BorderLayout.SOUTH);
 
         saveButton.addActionListener(new ActionListener() {
@@ -232,6 +279,7 @@ public class RegStudent extends JFrame{
         travel.setState(false);
         selfIntroduceArea.setText("");
     }
+
     private void printing() {
         System.out.print("학번\t\t이름\t성별\t전화번호\t주소\t\t\t\t학과\t\t\t");
         System.out.print("취미");
