@@ -1,4 +1,4 @@
-package subject_2;
+package subject_1;
 
 import java.awt.*;
 import javax.swing.*;
@@ -41,19 +41,19 @@ public class DecToOctCalculator extends JFrame{
         add(inputPanel);
         add(lowerPanel);
 
-        calcButton.addActionListener(new CalcButton());
+        calcButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int dec = Integer.parseInt(inputField.getText());
+                String oct = Integer.toOctalString(dec);
+                resultLabel.setText(oct);
+            }
+        });
         
         setVisible(true);
     }
 
-    private class CalcButton implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int dec = Integer.parseInt(inputField.getText());
-            String oct = Integer.toOctalString(dec);
-            resultLabel.setText(oct);
-        }
-        
+    public static void main(String[] args) {
+        new DecToOctCalculator();
     }
 }
