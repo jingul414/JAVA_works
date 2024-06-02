@@ -25,7 +25,7 @@ public class Student {
 
     public void printInfo(){
         System.out.print(id + "\t" + name + "\t\t" + gender + "\t" + phoneNumber + "\t" + address);
-        //주소와 학과 사이의 탭 개수, 설계에 없음
+        //공백 개수를 맞추기 위한 조건문, 설계에 없음
         int tab_count = (20 - address.length()) / 4;
         if((20 - address.length())%4 >2){
             for(int i = 0; i < tab_count+1; i++){
@@ -39,14 +39,15 @@ public class Student {
 
         System.out.print(depart + "\t\t");
 
-        String hobby_tmp = "";
+        //공백의 수를 세기 위해 하나의 String 으로 병합
+        String hobby_tmp = "";  
         for(String hobbies : hobby){
             hobby_tmp += hobbies + " ";
         }
-        System.out.print(hobby_tmp);
-        //취미와 자기소개 사이의 탭 개수, 설계에 없음
-        tab_count = (20 - hobby_tmp.length()) / 4;
 
+        System.out.print(hobby_tmp);
+        //공백 개수를 맞추기 위한 조건문, 설계에 없음
+        tab_count = (20 - hobby_tmp.length()) / 4;
         for (int i = 0; i < tab_count; i++) {
             System.out.print("\t");
         }

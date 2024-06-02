@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class RegStudent extends JFrame{
     private JTextField nameField, idField, phoneNumberField, addressField;  //성명, 학번, 전화번호, 주소를 입력할 텍스트 필드
     private CheckboxGroup genderGroup;                                      //성별 체크박스그룹
-    private Checkbox male, felmale,exercise, music, movie, travel;          //남, 여 체크박스,   학과선택, 운동, 음악감상, 영화, 여행 체크박스
+    private Checkbox male, female, exercise, music, movie, travel;          //남, 여 체크박스,   학과선택, 운동, 음악감상, 영화, 여행 체크박스
     private Choice departChoice;                                            //학과 선택
     private JTextArea selfIntroduceArea;                                    //자기소개 구역
     private ArrayList<Student> studentList = new ArrayList<Student>();      //학생 객체를 저장할 리스트
@@ -59,9 +59,9 @@ public class RegStudent extends JFrame{
         genderPanel.add(new JLabel("성별"));
         genderGroup = new CheckboxGroup();
         male = new Checkbox("남", genderGroup, false);
-        felmale = new Checkbox("여", genderGroup, false);
+        female = new Checkbox("여", genderGroup, false);
         genderPanel.add(male);
-        genderPanel.add(felmale);
+        genderPanel.add(female);
         genderPanel.setBackground(Color.yellow);
         firstPanel.add(genderPanel, BorderLayout.EAST);
 
@@ -283,10 +283,13 @@ public class RegStudent extends JFrame{
 
     private void printing() {
         System.out.print("학번\t\t이름\t\t성별\t전화번호\t주소\t\t\t\t학과\t\t\t취미");
+        
+        //공백의 갯수를 맞추기 위한 반복문, 설계x
         for (int i = 0; i < size;i++) {
             System.out.print("\t");
         }
         System.out.println("자기소개");
+        
         for(Student stu : studentList) {
             stu.printInfo();
         }
